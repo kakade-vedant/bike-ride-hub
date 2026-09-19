@@ -30,5 +30,20 @@
     ],
     "notes": "First 300 Km ride",
     "id": "ride-1789813478852"
+  },
+  {
+    "title": "Aambey valley - Lonavala Route",
+    "distanceKm": 150,
+    "difficulty": "Moderate",
+    "googleMapUrl": "https://www.google.com/maps/dir/Shahunagar,+MIDC,+Chinchwad,+Pimpri-Chinchwad,+Maharashtra+411019/Pirangut,+Maharashtra+412115/Aamby+Valley+City+Material+Gate+Entry,+J93M%2BPR9,+Aamby+Valley+City,+Lonavala,+Ambavne,+Maharashtra+410401/Lonavala,+Maharashtra/Shahunagar,+MIDC,+Chinchwad,+Pimpri-Chinchwad,+Maharashtra+411019/@18.6213145,73.4709657,11.72z/data=!4m37!4m36!1m5!1m1!1s0x3bc2b825760ce767:0xea90d95c544ab6ed!2m2!1d73.8080869!2d18.6566489!1m10!1m1!1s0x3bc2bd1bdecd4c57:0x6f5e3d0d8388ed13!2m2!1d73.6779271!2d18.5130169!3m4!1m2!1d73.4973205!2d18.5475127!3s0x3bc2a732587e8021:0xf03db7914016b0df!1m5!1m1!1s0x3be81dec4dc7ebdd:0x620713a0f9d33b88!2m2!1d73.3845625!2d18.6043125!1m5!1m1!1s0x3be801098bdf8145:0x696b4a60a5e28658!2m2!1d73.4090757!2d18.7557237!1m5!1m1!1s0x3bc2b825760ce767:0xea90d95c544ab6ed!2m2!1d73.8080869!2d18.6566489!3e9?entry=ttu&g_ep=EgoyMDI2MDkxNi4wIKXMDSoASAFQAw%3D%3D",
+    "stops": [
+      "Shahunagar",
+      "Pirangut",
+      "Aamby Valley City Material Gate Entry",
+      "Lonavala",
+      "Shahunagar"
+    ],
+    "notes": "Aambey valley - Lonavala Route",
+    "id": "ride-1789840185087"
   }
 ]
