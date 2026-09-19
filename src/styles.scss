@@ -5,3 +5,12 @@ body {
   color: #f4f4f5;
   -webkit-font-smoothing: antialiased;
 }
+
+#netlify-modal, 
+.netlify-badge, 
+[data-netlify-collaborate-feedback-widget] {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
