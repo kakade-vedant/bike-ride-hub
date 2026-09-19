@@ -1,0 +1,134 @@
+<div class="min-h-screen bg-zinc-950 text-zinc-100 flex flex-col">
+  <!-- Navbar / Header -->
+  <header
+    class="border-b border-zinc-800/80 bg-zinc-900/50 backdrop-blur sticky top-0 z-40"
+  >
+    <div
+      class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4"
+    >
+      <div class="flex items-center gap-3">
+        <div
+          class="bg-emerald-500/10 p-2 rounded-lg border border-emerald-500/20"
+        >
+          <svg
+            class="w-6 h-6 text-emerald-400"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"
+            />
+          </svg>
+        </div>
+        <div>
+          <h1 class="text-xl font-bold tracking-tight text-white">
+            BikeRideHub
+          </h1>
+          <p class="text-xs text-zinc-400">
+            Curated Motorcycle & Bicycle Adventures
+          </p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <button
+          (click)="downloadJson()"
+          class="px-3.5 py-2 text-xs font-semibold rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-200 border border-zinc-700/60 transition-colors"
+        >
+          Export rides.json
+        </button>
+        <button
+          (click)="showAddModal.set(true)"
+          class="px-4 py-2 text-xs font-bold rounded-lg bg-emerald-600 hover:bg-emerald-500 text-zinc-950 transition-colors shadow-sm flex items-center gap-1.5"
+        >
+          <span>+ Add Route</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-1 w-full">
+    <!-- Filter Controls -->
+    <section
+      class="bg-zinc-900/60 border border-zinc-800 rounded-xl p-4 mb-8 flex flex-col md:flex-row gap-4 justify-between items-stretch md:items-center"
+    >
+      <!-- Search Field -->
+      <div class="relative flex-1">
+        <svg
+          class="w-4 h-4 text-zinc-500 absolute left-3 top-3"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+          />
+        </svg>
+        <input
+          type="text"
+          [ngModel]="searchQuery()"
+          (ngModelChange)="searchQuery.set($event)"
+          placeholder="Filter by route name, city, or waypoint..."
+          class="w-full bg-zinc-950 border border-zinc-800 rounded-lg pl-9 pr-3 py-2 text-sm text-zinc-200 placeholder-zinc-500 focus:outline-none focus:border-emerald-500"
+        />
+      </div>
+
+      <!-- Difficulty & Distance Sort Controls -->
+      <div class="flex flex-wrap sm:flex-nowrap gap-3">
+        <select
+          [ngModel]="selectedDifficulty()"
+          (ngModelChange)="selectedDifficulty.set($event)"
+          class="bg-zinc-950 border border-zinc-800 rounded-lg px-3 py-2 text-sm text-zinc-300 focus:outline-none focus:border-emerald-500"
+        >
+          <option value="All">All Difficulties</option>
+          <option value="Easy">Easy</option>
+          <option value="Moderate">Moderate</option>
+          <option value="Hard">Hard</option>
+        </select>
+
+        <select
+          [ngModel]="sortByDistance()"
+          (ngModelChange)="sortByDistance.set($event)"
+          class="bg-zinc-950 border border-zinc-800 rounded-lg px-3 py-2 text-sm text-zinc-300 focus:outline-none focus:border-emerald-500"
+        >
+          <option value="none">Sort by Distance</option>
+          <option value="asc">Distance: Low to High</option>
+          <option value="desc">Distance: High to Low</option>
+        </select>
+      </div>
+    </section>
+
+    <!-- Rides Grid -->
+    <section>
+      @if (filteredRides().length > 0) {
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          @for (ride of filteredRides(); track ride.id) {
+            <app-ride-card [ride]="ride" />
+          }
+        </div>
+      } @else {
+        <div
+          class="text-center py-20 border border-dashed border-zinc-800 rounded-2xl"
+        >
+          <p class="text-zinc-400 font-medium mb-1">No matching routes found</p>
+          <p class="text-xs text-zinc-600">
+            Try adjusting your filters or search query.
+          </p>
+        </div>
+      }
+    </section>
+  </main>
+
+  <!-- Modal -->
+  @if (showAddModal()) {
+    <app-add-ride-modal (close)="showAddModal.set(false)" />
+  }
+</div>

@@ -1,12 +1,10 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RideListComponent } from './components/ride-list/ride-list.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  standalone: true,
+  imports: [RideListComponent],
+  template: `<app-ride-list />`
 })
-export class AppComponent {
-  title = 'bike_Ride_Hub';
-}
+export class AppComponent {}

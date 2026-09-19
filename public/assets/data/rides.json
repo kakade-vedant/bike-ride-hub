@@ -1,0 +1,35 @@
+[
+  {
+    "title": "The Mulshi-Tamhini HighLands Loop",
+    "distanceKm": 150,
+    "difficulty": "Moderate",
+    "googleMapUrl": "https://maps.app.goo.gl/NhzehkCR2V3nbYNR7?g_st=aw",
+    "stops": [
+      "Home",
+      "Mulshi Dam",
+      "Aamby valley",
+      "Lonavala",
+      "Home"
+    ],
+    "notes": "New Route",
+    "id": "ride-1789813105009"
+  },
+  {
+    "title": "Malshej - Pimpalgaon Joga Route",
+    "distanceKm": 294,
+    "difficulty": "Moderate",
+    "googleMapUrl": "https://maps.app.goo.gl/vvxLhoknt4cuNBsv7",
+    "stops": [
+      "Home",
+      "Karjat",
+      "Petrol Pump",
+      "Petrol Pump",
+      "Malshej Ghat view point",
+      "Pimpalgaon Joga Dam",
+      "Petrol Pump",
+      "Home"
+    ],
+    "notes": "First 300 Km ride",
+    "id": "ride-1789813478852"
+  }
+]

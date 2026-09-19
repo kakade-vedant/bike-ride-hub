@@ -1,0 +1,148 @@
+<div
+  class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4"
+>
+  <div
+    class="bg-zinc-900 border border-zinc-800 w-full max-w-xl rounded-2xl p-6 shadow-2xl relative text-zinc-200 max-h-[90vh] overflow-y-auto"
+  >
+    <div class="flex justify-between items-center mb-5">
+      <h2 class="text-xl font-bold text-white tracking-tight">Add New Route</h2>
+      <button (click)="close.emit()" class="text-zinc-500 hover:text-zinc-300">
+        <svg
+          class="w-5 h-5"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 18L18 6M6 6l12 12"
+          />
+        </svg>
+      </button>
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="space-y-4">
+      <div>
+        <label
+          class="block text-xs uppercase font-mono tracking-wider text-zinc-400 mb-1"
+          >Route Title</label
+        >
+        <input
+          type="text"
+          formControlName="title"
+          placeholder="e.g. Coastal Cruiser Loop"
+          class="w-full bg-zinc-950 border border-zinc-800 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-500"
+        />
+      </div>
+
+      <div class="grid grid-cols-2 gap-4">
+        <div>
+          <label
+            class="block text-xs uppercase font-mono tracking-wider text-zinc-400 mb-1"
+            >Distance (km)</label
+          >
+          <input
+            type="number"
+            formControlName="distanceKm"
+            placeholder="120"
+            class="w-full bg-zinc-950 border border-zinc-800 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-500"
+          />
+        </div>
+        <div>
+          <label
+            class="block text-xs uppercase font-mono tracking-wider text-zinc-400 mb-1"
+            >Difficulty</label
+          >
+          <select
+            formControlName="difficulty"
+            class="w-full bg-zinc-950 border border-zinc-800 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-500"
+          >
+            <option value="Easy">Easy</option>
+            <option value="Moderate">Moderate</option>
+            <option value="Hard">Hard</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <label
+          class="block text-xs uppercase font-mono tracking-wider text-zinc-400 mb-1"
+          >Google Maps URL</label
+        >
+        <input
+          (input)="onUrlInput($event)"
+          type="url"
+          formControlName="googleMapUrl"
+          placeholder="https://www.google.com/maps/dir/..."
+          class="w-full bg-zinc-950 border border-zinc-800 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-500"
+        />
+      </div>
+
+      <div>
+        <label
+          class="block text-xs uppercase font-mono tracking-wider text-zinc-400 mb-1"
+          >Waypoints / Stops (Comma separated)</label
+        >
+        <input
+          type="text"
+          formControlName="stopsInput"
+          placeholder="Start City, Landmark, Vista Point, End City"
+          class="w-full bg-zinc-950 border border-zinc-800 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-500"
+        />
+      </div>
+
+      <div>
+        <label
+          class="block text-xs uppercase font-mono tracking-wider text-zinc-400 mb-1"
+          >Notes & Conditions</label
+        >
+        <textarea
+          formControlName="notes"
+          rows="3"
+          placeholder="Surface conditions, fuel stations, cautions..."
+          class="w-full bg-zinc-950 border border-zinc-800 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-500"
+        ></textarea>
+      </div>
+
+      <div
+        class="flex items-center justify-between gap-3 pt-3 border-t border-zinc-800"
+      >
+        <div class="flex gap-2">
+          <button
+            type="button"
+            (click)="copyJsonPayload()"
+            class="text-xs bg-zinc-800 hover:bg-zinc-700 text-zinc-300 font-medium px-3 py-2 rounded-lg transition-colors"
+          >
+            {{ copyStatus() }}
+          </button>
+          <button
+            type="button"
+            (click)="downloadJson()"
+            class="text-xs bg-zinc-800 hover:bg-zinc-700 text-zinc-300 font-medium px-3 py-2 rounded-lg transition-colors"
+          >
+            Download JSON
+          </button>
+        </div>
+
+        <div class="flex gap-2">
+          <button
+            type="button"
+            (click)="close.emit()"
+            class="text-sm px-4 py-2 rounded-lg text-zinc-400 hover:text-white"
+          >
+            Cancel
+          </button>
+          <button
+            type="submit"
+            [disabled]="form.invalid"
+            class="text-sm px-5 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-500 disabled:opacity-50 text-zinc-950 font-bold transition-colors"
+          >
+            Save Route
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
