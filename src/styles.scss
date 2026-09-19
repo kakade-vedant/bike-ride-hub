@@ -7,10 +7,11 @@ body {
 }
 
 #netlify-modal, 
-.netlify-badge, 
+.nl-badge, 
 [data-netlify-collaborate-feedback-widget] {
     display: none !important;
     visibility: hidden !important;
     opacity: 0 !important;
     pointer-events: none !important;
 }
+
